@@ -1,5 +1,5 @@
-VERBOSE = 1
-APPNAME = chainmon
+VERBOSE=1
+APPNAME=myapp
 
 include main.mk
 
@@ -26,13 +26,13 @@ swagger-ui:
 ## Local docker build
 
 docker-build-debug: ## build test debug docker image
-	docker build -t chainmon:test-debug --build-arg BUILD_TARGET=debug --build-arg BUILD_ENVIRONMENT=development --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
+	docker build -t ${APPNAME}:test-debug --build-arg BUILD_TARGET=debug --build-arg BUILD_ENVIRONMENT=development --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
 
 docker-build-integration: ## build test debug docker image
-	docker build -t chainmon:test-integration --build-arg BUILD_TARGET=debug --build-arg BUILD_ENVIRONMENT=integration --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
+	docker build -t ${APPNAME}:test-integration --build-arg BUILD_TARGET=debug --build-arg BUILD_ENVIRONMENT=integration --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
 
 docker-build-release: ## build test release docker image
-	docker build -t chainmon:test-release --build-arg BUILD_TARGET=release --build-arg BUILD_ENVIRONMENT=production --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
+	docker build -t ${APPNAME}:test-release --build-arg BUILD_TARGET=release --build-arg BUILD_ENVIRONMENT=production --build-arg VERSION=${CI_COMMIT_SHORT_SHA} .
 
 ## Local run
 
